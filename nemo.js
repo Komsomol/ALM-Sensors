@@ -54,6 +54,7 @@ const processValue = (value) => {
 
 // Parse XY-240 Data Format
 const parseValue = (data) => {
+    console.log(data);
     const match = data.match(/X001B\[Dz=(\d{2}|XX)\]/);
     if (!match) return null;
     return match[1] === 'XX' ? 0 : parseInt(match[1], 10);
