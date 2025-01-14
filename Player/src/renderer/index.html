@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kiosk Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <webview id="viewer" allowpopups autosize="on"></webview>
+    <script>
+        const webview = document.getElementById('viewer')
+        const urlToLoad = localStorage.getItem('kioskUrl') || 'http://localhost:5600'
+        webview.src = urlToLoad
+    </script>
+</body>
+</html>

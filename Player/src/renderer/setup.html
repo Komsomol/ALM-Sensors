@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kiosk Setup</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				padding: 20px;
+				background: #f0f0f0;
+			}
+			.container {
+				text-align: center;
+			}
+			input {
+				width: 300px;
+				padding: 10px;
+				margin: 20px 0;
+				font-size: 16px;
+			}
+			button {
+				padding: 10px 20px;
+				font-size: 16px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="setup-container">
+			<h2>Kiosk Player Setup</h2>
+			<p>Enter the server IP here.</p>
+			<input
+				type="text"
+				id="urlInput"
+				value="http://localhost:5600"
+				placeholder="Enter URL (e.g., http://localhost:5600)"
+			/>
+			<br />
+			<button onclick="launchKiosk()">Launch Kiosk</button>
+			<button onclick="standAlone()">Stand Alone Player</button>
+		</div>
+		<script>
+			const { ipcRenderer } = require('electron');
+
+			function launchKiosk() {
+				const url = document.getElementById('urlInput').value;
+				if (isValidUrl(url)) {
+					ipcRenderer.send('start-kiosk', url);
+					window.close(); // Close setup window
+				} else {
+					alert('Please enter a valid URL');
+				}
+			}
+
+			function isValidUrl(string) {
+				try {
+					new URL(string);
+					return true;
+				} catch (_) {
+					return false;
+				}
+			}
+
+			function standAlone() {
+				ipcRenderer.send('stand-alone');
+				window.close(); // Close setup window
+			}
+		</script>
+	</body>
+</html>

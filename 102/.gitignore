@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+*.log
+public/video/*
+.vscode/
+.DS_Store

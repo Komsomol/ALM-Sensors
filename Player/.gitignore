@@ -1,0 +1,8 @@
+node_modules
+dist
+dist.zip
+videos/**/*.mp4
+videos/**/*.webm
+videos/209/*.mp4
+videos/102/*.mp4
+videos/103/*.mp4

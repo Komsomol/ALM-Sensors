@@ -1,0 +1,41 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: black;
+}
+
+.video-stack {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+video {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: none;
+	margin: 0;
+	padding: 0;
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+}
+
+#idle-video {
+	display: block;
+	z-index: 1;
+}
+
+.active {
+	display: block;
+	z-index: 2;
+}

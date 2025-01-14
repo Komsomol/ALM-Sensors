@@ -1,0 +1,26 @@
+# Nexmosphere Presence Sensor with Webpage
+
+-   Allows playback of MP4 video via a Nexmosphere Presence Sensor
+-   Express server to serve the webpage and capture the presence sensor events
+
+## Drivers for Mac
+
+-   On PC the sensors will communicated over serial COM4 by default
+-   On Mac you need to insall the com.prolific.driver.PL2303 driver, which you cna find in the Aopp Store under Prolific PL2303 Serial driver in utilities.
+-   On Mac you need to also enable it in Driver Extension -> System Settings > General > Login Items & Extensions > Driver Extensions
+-   Restart machine and run PL203 app to see if the sensor is connected, run `ls /dev/cu.*` or `ls /dev/tty.*` to see if the sensor is connected
+-   If done correctly you will see `/dev/cu.PL2303G-USBtoUART1120` in the terminal
+
+## Setup
+
+1. Install Node.js
+2. Clone this repository
+3. Run `npm install` in the root directory
+4. Run `npm start` to start the server
+5. Open a browser and navigate to `http://localhost:5600`
+
+## Vars
+
+-   `PORT` - The port the server will run on
+-   Make sure to check port on target: 'http://localhost:5600', in vite.config.js
+-   Make sure same port is used in the Express server

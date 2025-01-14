@@ -1,0 +1,57 @@
+{
+	"name": "electron-kiosk-player",
+	"version": "1.0.0",
+	"main": "src/main/main.js",
+	"scripts": {
+		"clean": "rimraf dist",
+		"start": "electron .",
+		"dev": "electron . --inspect",
+		"prebuild": "npm run clean",
+		"build": "npm run clean && electron-builder --win",
+		"build:win": "npm run clean && electron-builder --win --x64",
+		"build:mac": "npm run clean && electron-builder --mac",
+		"build:linux": "npm run clean && electron-builder --linux"
+	},
+	"build": {
+		"appId": "com.kiosk.player",
+		"productName": "Electron Kiosk Player",
+		"directories": {
+			"buildResources": "build",
+			"output": "dist"
+		},
+		"extraResources": [
+			{
+				"from": "videos",
+				"to": "videos",
+				"filter": [
+					"**/*"
+				]
+			}
+		],
+		"win": {
+			"target": [
+				{
+					"target": "portable",
+					"arch": [
+						"x64"
+					]
+				}
+			]
+		},
+		"nsis": {
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true,
+			"createDesktopShortcut": true,
+			"createStartMenuShortcut": true,
+			"shortcutName": "Kiosk Player"
+		},
+		"portable": {
+			"artifactName": "${productName}-Portable-${version}.${ext}"
+		}
+	},
+	"devDependencies": {
+		"electron": "^27.1.0",
+		"electron-builder": "^25.1.8",
+		"rimraf": "^6.0.1"
+	}
+}
