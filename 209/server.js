@@ -21,7 +21,7 @@ const getPortPath = () => {
 	switch (os) {
 		case 'darwin': // macOS
 			console.log('macOS detected');
-			return '/dev/tty.PL2303G-USBtoUART1120';
+			return '/dev/tty.PL2303G-USBtoUART130';
 		case 'win32': // Windows
 			console.log('Windows detected');
 			return 'COM4';
